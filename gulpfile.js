@@ -24,3 +24,11 @@ gulp.task("minifyScripts", ["jsBrowserify"], function(){
     .pipe(uglify())
     .pipe(gulp.dest("./build/js"));
 });
+
+gulp.task("build", function(){
+  if (buildProduction) {
+    gulp.start('minifyScripts');
+  } else {
+    gulp.start('jsBrowserify');
+  }
+});
